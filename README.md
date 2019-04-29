@@ -1,6 +1,6 @@
 # nuxt-contentful-starter
 
-> My hunky-dory Nuxt.js project
+> A quick start project for setting up a Nuxt + Contentful Blog
 
 ## Build Setup
 
