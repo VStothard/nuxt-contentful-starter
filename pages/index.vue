@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="text-center text-white bg-teal py-12 mt-4 mb-4 rounded">
+    <div class="text-center text-white bg-teal py-12 mt-4 rounded">
       <h1>JAMStack Blog ✌️</h1>
     </div>
-    <div class="border border grey-light rounded p-4 md:p-8">
+    <div class="border border grey-light rounded p-4 md:p-8 my-4">
       <h2 class="text-grey text-sm text-center uppercase">Latest posts</h2>
       <div class="flex flex-wrap">
         <div v-for="(post, i) in blogPosts" :key="i" class="mt-4 p-4 w-100 sm:w-1/2">
