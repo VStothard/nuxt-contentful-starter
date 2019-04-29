@@ -1,6 +1,15 @@
 import pkg from './package'
 require('dotenv').config()
 
+// Make contentful client accessible in config,
+// (can't use plugin as env variables are not accessible there until nuxt config is finished parsing)
+const contentful = require('contentful')
+const config = {
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+}
+const client = contentful.createClient(config)
+
 export default {
   mode: 'universal',
 
@@ -62,6 +71,16 @@ export default {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
+    }
+  },
+  generate: {
+    routes: async function () {
+      const entries = await client.getEntries({ content_type: "blogPost" });
+      const routes = []
+      entries.items.forEach(item => {
+        routes.push(`blog/${item.fields.slug}`)
+      })
+      return routes
     }
   }
 }
